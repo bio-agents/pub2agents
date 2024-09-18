@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright © 2019 Erik Jaaniso
+
+   This file is part of Pub2Agents.
+
+   Pub2Agents is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   Pub2Agents is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with Pub2Agents.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>agents.bio.pub2agents</groupId>
+    <artifactId>pub2agents</artifactId>
+    <version>1.1.2-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>pub2agents-cli</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Pub2Agents-CLI</name>
+  <url>https://github.com/bio-agents/pub2agents</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.edamontology.pubfetcher</groupId>
+      <artifactId>pubfetcher-core</artifactId>
+      <version>${pubfetcher.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.edamontology.edammap</groupId>
+      <artifactId>edammap-core</artifactId>
+      <version>${edammap.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>agents.bio.pub2agents</groupId>
+      <artifactId>pub2agents-core</artifactId>
+      <version>${pub2agents.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>agents.bio.pub2agents.cli.Pub2Agents</mainClass>
+            </manifest>
+            <manifestEntries>
+              <Class-Path>pub2agents-core-${pub2agents.version}.jar</Class-Path>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
